@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        margin-top: 50px;
+    }
+    .background-color {
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+    }
+</style>
+<h1 style="text-align: center;">Form</h1>
+<body class="background-color border pading-3">
+    <div class="container" style="margin: 50px;">
+        <form>
+            <div class="form-group row ">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="disabledInput" class="col-sm-2 col-form-label">Label</label>
+                <div class="col-sm-10">
+                    <input type="text" id="@username" class="form-control" placeholder="@username" disabled>
+                </div>
+                <div class="col-sm-10">
+                    <textarea rows="3" cols="50">Please input your message here...</textarea>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label for="name">Text Area</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="3" cols="50"></textarea>
+                </div>
+            </div>
+            <p>Check Box</p>
+            <div class="form-check">
+              <label class="checkbox-inline">
+                <label><input type="checkbox" value="">Option1</label>
+                <label><input type="checkbox" value="">Option2</label>
+                <label><input type="checkbox" value="">Option3</label>
+              </label>
+            </div>
+            <p>Radio Buttons</p>
+            <div class="form-check">
+              <label class="radio-inline">
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"> Option1
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Option2
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> Option3
+              </label>
+            </div>
+            <p>Select List</p>
+            <select class="form-control">
+                <option>Phnom Penh</option>
+                <option>Siem Reap</option>
+                <option>Takeo</option>
+            </select>
+            <p>Standard Button</p>
+            <div class="container">
+                <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary">Reset</button>
+                <button type="button" class="btn btn-danger">Cancel</button>
+                <button type="button" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-warning">Clear</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
