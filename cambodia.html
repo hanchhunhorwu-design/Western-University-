@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambodia Photo Gallery - Discover the Kingdom of Wonder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-image: url("https://imgs.search.brave.com/uDNitaIjoEYKBGQ-BI3mGghDx-0ohL5ry4Db6kL2hjc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vd3d3LnRy/YWlsaW5ncmFjaGVs/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxNi8xMC9TaWVt/LVJlYXAtYW5kLXRo/ZS1SZWFsaXR5LUJl/aGluZC1NeS1WaXNp/dC10by1Bbmdrb3It/V2F0LTE5LmpwZz9y/ZXNpemU9NzUwLDUw/MA");
+            color: white;
+            text-align: center;
+            background-position: center;
+            background-size: cover;
+            padding: 60px 200px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-repeat: no-repeat;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        nav {
+            background: rgb(139, 53, 53);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0px;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #d4a574;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #8b4513;
+            margin: 50px 0 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 3px;
+            background: #d4a574;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .photo {
+            width: 100%;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover .photo img {
+            transform: scale(1.05);
+        }
+
+        .photo-info {
+            padding: 20px;
+        }
+
+        .photo-info h3 {
+            color: #8b4513;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .photo-info p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .about {
+            background: white;
+            padding: 50px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 50px 0;
+        }
+
+        .about h2 {
+            color: #8b4513;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .fact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #d4a574;
+        }
+
+        .fact-card h3 {
+            color: #8b4513;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .fact-card p {
+            color: #666;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            header {
+                padding: 40px 15px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .photo {
+                height: 200px;
+            }
+            
+            .about {
+                padding: 30px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Cambodia Photo Gallery</h1>
+        <p>Discover the Kingdom of Wonder - Land of Ancient Temples and Rich Culture</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#temples">Ancient Temples</a></li>
+            <li><a href="#culture">Culture</a></li>
+            <li><a href="#nature">Nature</a></li>
+            <li><a href="#food">Cuisine</a></li>
+            <li><a href="#about">About Cambodia</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="temples">
+            <h2 class="section-title">Ancient Temples</h2>
+            <div class="gallery">
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/-knOidokdN6aAdVGPLoAz8cTivG7dCZQ8cTgfiueSfk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvOTcz/OTQ3MjQ2L3Bob3Rv/L2FuZ2tvci13YXQt/dGVtcGxlLWF0LXN1/bnNldC1zaWVtLXJl/YXAtY2FtYm9kaWEu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PVFQSVVSaHRCT0xF/UWVxRkVBX1h6Qm91/Nk1HcWFZQnB0Y1dl/LURvR3l5dk09" alt="Angkor Wat Temple">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Angkor Wat</h3>
+                        <p>The magnificent 12th-century temple complex, the largest religious monument in the world. A UNESCO World Heritage site and symbol of Cambodia.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/ylMPpw1si3jWZUpWWRQwS2SXzWqOHzouLgIJB3dXeFo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9iYXlv/bi10ZW1wbGUtYW5n/a29yLXRob20tc3Vu/c2V0LWNvbXBsZXgt/Y2FwaXRhbC1jaXR5/LWtobWVyLWVtcGly/ZS1zaWVtLXJlYXAt/cHJvdmluY2UtY2Ft/Ym9kaWEtbWFoYXlh/bmEtYnVkZGhpc3Qt/MzE4MDYyNTQ2Lmpw/Zw" alt="Bayon Temple">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Bayon Temple</h3>
+                        <p>Famous for its massive stone faces, this temple sits at the center of Angkor Thom. Each face represents Avalokiteshvara, the bodhisattva of compassion.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/NxRu4oM4odsDNQeomYIsIf3WRNFIi3BGXmx_mp6845k/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNzQw/NTI3MDI3L3Bob3Rv/L3BvcnRyYWl0LW9m/LXlvdW5nLWZlbWFs/ZS10b3VyaXN0LWJ5/LXRyZWUtcm9vdHMt/YXQtdGEtcHJvaG0t/dGVtcGxlLWFuZ2tv/ci1zaWVtLXJlYXAt/Y2FtYm9kaWEuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPTZT/akRCSVNLajB3Rkg4/Ym9TLVpkUThUMXZf/QlpkYWxoenBwMWZT/dTJoNkk9" alt="Ta Prohm Temple">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Ta Prohm</h3>
+                        <p>Known as the "Tomb Raider Temple," this ancient temple is being reclaimed by massive tree roots, creating a mystical atmosphere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="culture">
+            <h2 class="section-title"> Khmer Culture</h2>
+            <div class="gallery">
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/lJLQJltpqehVdkT--gprZjpZIoMcGqlcQhwn0OxYBD0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lbi5m/YXJlYXN0b3VyLmNv/bS9pbWFnZXMvZGVz/dGluYXRpb24vaW1n/Mi9hcHNhcmEtZGFu/Y2UtcGVyZm9ybWFu/Y2VzLWNhbWJvZGlh/Mi5qcGc" alt="Apsara Dance">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Apsara Dance</h3>
+                        <p>Traditional Khmer classical dance performed by graceful dancers in elaborate costumes, telling stories from ancient Hindu epics.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/ENSLlDK7BlPKClw1XZ6qvFN3_jdn17WwJkf_C-fwfLw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9iMmIt/Y2FtYm9kaWEuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIz/LzA4L1dhdGVyLUZl/c3RpdmFsLUNhbWJv/ZGlhLmpwZw" alt="Water Festival">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Water Festival</h3>
+                        <p>Bon Om Touk, Cambodia's most important festival, celebrating the reversal of the Mekong River with dragon boat races and festivities.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSakDF3aNlBSqXY2GYKNgF251g7GyRzjvGtmmord1FoTmukUzfO" alt="Traditional Crafts">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Traditional Crafts</h3>
+                        <p>Beautiful handmade silk textiles, silver jewelry, and wood carvings showcasing centuries-old Khmer artistic traditions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="nature">
+            <h2 class="section-title"> Natural Beauty</h2>
+            <div class="gallery">
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/WGTpowaxlJCgEE2oVYrtp-BfEGNTMyqtXJRvOrYqbIM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hc2lh/bGVnZW5kLnRyYXZl/bC93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NS8wMS9NZWtvbmct/Uml2ZXItUGFzc2Vz/LVRocm91Z2gtV2hp/Y2gtQ291bnRyaWVz/LUNhbWJvZGlhLmpw/Zw" alt="Mekong River">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Mekong River</h3>
+                        <p>The mighty Mekong flows through Cambodia, providing life to millions and home to the rare Irrawaddy dolphins.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/l4HRaHK8YTGi9_DihC8SAq3S8tc-TQ4PibnBkDVVThE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc3F1YXJlc3Bh/Y2UtY2RuLmNvbS9j/b250ZW50L3YxLzVm/YTE1MjIwNDRiZGRh/MTkyNzEzMDYzYy8x/NjIyOTYxNzUwNTA4/LVVSWkNGSVhGV1VP/MEdHQURYTlI5L0tv/aCtSb25n" alt="Coastal Beaches">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Coastal Beaches</h3>
+                        <p>Pristine beaches along the Gulf of Thailand, including Sihanoukville and the peaceful islands of Koh Rong.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/WBnVSfJOtNMjSDeV2RwakXrwN9_5z4K1lSsE-bhIEls/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aGVi/ZXR0ZXJjYW1ib2Rp/YS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjUvMDUvQ2Fy/ZGFtb20tTW91bnRh/aW5zLTg2MHg1MTAu/anBn" alt="Cardamom Mountains">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Cardamom Mountains</h3>
+                        <p>Lush rainforests home to endangered species like Asian elephants, sun bears, and over 450 bird species.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="food">
+            <h2 class="section-title">Delicious Cuisine</h2>
+            <div class="gallery">
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/bPvuE-CfTJRNBfrp3HxuS5pzPAm3YbuhQNXZ2MXw9EI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2h1dHRlcnN0b2Nr/LmNvbS9pbWFnZS1w/aG90by9hbW9rLW1h/am9yLW5hdGlvbmFs/LWN1bGluYXJ5LXRy/YWRpdGlvbi0yNjBu/dy03NjYzMjA2ODIu/anBn" alt="Amok Dish">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Amok</h3>
+                        <p>Cambodia's national dish - fragrant fish curry steamed in banana leaves with coconut milk and aromatic spices.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/hLdJI4aPcKqVWSN1Nkg8qABaP-1l0t8ceho43SFLLj0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/c2h1dHRlcnN0b2Nr/LmNvbS9pbWFnZS1w/aG90by90aGlzLWt1/eS10ZWF2LW5vb2Rs/ZS1zb3VwLTI2MG53/LTQzNDc1NDA4NS5q/cGc" alt="Kuy Teav Noodle Soup">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Kuy Teav</h3>
+                        <p>Popular breakfast noodle soup with pork or beef, served with fresh herbs, bean sprouts, and lime.</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <div class="photo">
+                        <img src="https://imgs.search.brave.com/pypLCLHtg8quu9_pnaSN5nBibba-p1TKOrr4P9bTq_4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTEz/MjQ0OTI1NS9waG90/by9jYW1ib2RpYS1w/cmVhaC12aWhlYXIu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PW9ybHhPNEJyV3Zo/QW5wLXRLNnFYYUs4/TUNXeFNZaFRrYVVG/UlNyN1NyV1U9" alt="Tropical Fruits">
+                    </div>
+                    <div class="photo-info">
+                        <h3>Fresh Tropical Fruits</h3>
+                        <p>Exotic fruits like dragon fruit, rambutan, and the world's best mangoes grow abundantly in Cambodia's tropical climate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About the Kingdom of Cambodia</h2>
+            <p>
+                Cambodia, officially known as the Kingdom of Cambodia, is a country in Southeast Asia known for its rich history, 
+                stunning architecture, and warm hospitality. Home to the magnificent Angkor temple complex, Cambodia has a 
+                fascinating culture that blends ancient traditions with modern life.
+            </p>
+            <p>
+                The country is famous for the Khmer Empire, which flourished from the 9th to 15th centuries and left behind 
+                incredible architectural marvels. Today, Cambodia is a peaceful nation working to preserve its cultural heritage 
+                while embracing development and tourism.
+            </p>
+        </section>
+
+        <section class="facts">
+            <div class="fact-card">
+                <h3>UNESCO Sites</h3>
+                <p>Cambodia has 3 UNESCO World Heritage Sites, including the famous Angkor Archaeological Park.</p>
+            </div>
+            <div class="fact-card">
+                <h3> National Flower</h3>
+                <p>The Rumduol (a type of banana flower) is Cambodia's national flower, symbolizing the gentle nature of Khmer women.</p>
+            </div>
+            <div class="fact-card">
+                <h3>Language</h3>
+                <p>Khmer is the official language, spoken by over 95% of the population. It has its own unique alphabet with 74 letters.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Cambodia Photo Gallery | Exploring the Kingdom of Wonder | Made with ❤️ </p>
+    </footer>
+</body>
+</html>
